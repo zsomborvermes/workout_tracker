@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Workout{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post" class="col-8">
+    <div class="row">
+    <div class="col">
+        <input type="text" class="form-control" name="exercise_name" id="exercise_name" placeholder="Exercise name" required>
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" name="repetitions" id="repetitions" placeholder="Repetitions" required>
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" name="weight" id="weight" placeholder="Weight" required>
+    </div>
+    <div class="col">
+        <input type="submit" class="form-control btn btn-success" value="Add Exercise">
+    </div>
+    </div>
+</form>
+{% if exercises %}
+    <table class="table col-8">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Repetitions</th>
+                <th scope="col">Weight</th>
+            </tr>
+        </thead>
+        {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise['name'] }}</td>
+                <td>{{ exercise['repetitions'] }}</td>
+                <td>{{ exercise['weight'] }} kg</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}

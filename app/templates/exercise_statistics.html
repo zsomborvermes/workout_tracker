@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Exercise statistics{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% if exercises %}
+      <table class="table col-8">
+          <thead>
+              <tr>
+                  <th scope="col">Exercise Name</th>
+                  <th scope="col">Average weight</th>
+                  <th scope="col">Max weight</th>
+                  <th scope="col">Average reps</th>
+                  <th scope="col">Total reps</th>
+              </tr>
+          </thead>
+          {% for exercise in exercises %}
+              <tr>
+                  <td>{{ exercise['name'] }}</td>
+                  <td>{{ exercise['avg_weight'] }} kg</td>
+                  <td>{{ exercise['max_weight'] }} kg</td>
+                  <td>{{ exercise['avg_reps'] }}</td>
+                  <td>{{ exercise['total_reps'] }}</td>
+              </tr>
+          {% endfor %}
+      </table>
+  {% endif %}
+{% endblock %}

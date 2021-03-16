@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Record Lifts{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% if records %}
+      <table class="table col-8">
+          <thead>
+              <tr>
+                  <th scope="col">Exercise Name</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Username</th>
+              </tr>
+          </thead>
+          {% for record in records %}
+              <tr>
+                  <td>{{ record['exercise_name'] }}</td>
+                  <td>{{ record['personal_record'] }} kg</td>
+                  <td>{{ record['username'] }}</td>
+              </tr>
+          {% endfor %}
+      </table>
+  {% endif %}
+{% endblock %}
